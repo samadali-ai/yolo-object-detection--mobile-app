@@ -1,0 +1,43 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.my_onnx_app"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.my_onnx_app"
+        minSdk = 21 // Updated to cover more devices
+        targetSdk = 33 // Updated to the latest stable version
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        multiDexEnabled true // Enable multidex if needed
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug // Update with your signing config for production
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:multidex:1.0.3' // Add this if multidex is enabled
+}
+
+flutter {
+    source = "../.."
+}
